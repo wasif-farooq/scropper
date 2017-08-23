@@ -1,6 +1,7 @@
 {
     "name": "sonsor/scropper",
     "type": "Open Source",
+    "description": "This class provides you crop images of jpeg, jpg, png, bmp, gif each type has a handler of it own so if you want to add new extension just add new handler and you are good to go.",
     "license": "GPL",
     "authors": [
         {

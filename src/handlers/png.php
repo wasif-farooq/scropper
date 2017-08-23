@@ -1,10 +1,20 @@
 <?php 
+/**
+* An handler class of png image
+*
+* @category   image croppering
+* @package    scropper
+* @author     Wasif Farooq <wasif0332@gmail.com>
+* @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+* @version    1.0
+*/
 
 class PNGHandler extends Handler
 {
     /**
     * this function checks if provided image is capable of cropping or not if not then throw exception
     * @return void
+    * @throws Exception
     */
     public function setup()
     {
@@ -23,15 +33,22 @@ class PNGHandler extends Handler
     */
     public function process()
     {
+        // getting image data       
         $img = imagecreatefrompng($this->getSrc());
+
+        // create a new image
         $target = imagecreatetruecolor($this->getWidth(), $this->getHeight());
 
+        // setting image alpha transparency
         imagecolortransparent($target, imagecolorallocatealpha($target, 0, 0, 0, 127));
         imagealphablending($target, false);
         imagesavealpha($target, true);
 
-        imagecopyresampled($target, $img, 0, 0, $this->getX(), $this->getY(), $this->getWidth(), $this->getHeight(), $crpdWidth(), $crpdHeight());
+        // saving image to target place
+        imagecopyresampled($target, $img, 0, 0, $this->getX(), $this->getY(), $this->getWidth(), $this->getHeight(), $this->getWidth(), $this->getHeight());
         imagepng($target, $this->getTarget());
+
+        // return target path of cropped image
         return $this->getTarget();
     }
 }
