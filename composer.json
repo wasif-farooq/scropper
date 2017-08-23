@@ -1,0 +1,13 @@
+{
+    "name": "sonsor/scropper",
+    "type": "Open Source",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "sonsor",
+            "email": "wasif0332@gail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
